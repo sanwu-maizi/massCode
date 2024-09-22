@@ -115,6 +115,14 @@ onUnmounted(() => {
   .body {
     .inner {
       padding: 0 var(--spacing-xs);
+
+      /* 添加过渡效果 */
+      transition: padding 0.3s ease;
+
+      /* 当被激活或选中时 */
+      &:hover {
+        padding: 0 var(--spacing-sm); /* 调整 padding 大小 */
+      }
     }
   }
   // overflow: hidden;

@@ -199,12 +199,16 @@ watch(
   width: 100%;
   z-index: 2;
   user-select: none;
+
+  /* 保证过渡效果在状态变化时生效 */
+  transition: background-color 0.2s ease, color 0.2s ease;
+
   &.is-system,
   &.is-tag {
     padding-left: var(--spacing-sm);
     padding-right: var(--spacing-sm);
   }
-  &.is-focused,
+  &.is-fo cused,
   &.is-selected,
   &.is-highlighted {
     &::before {
@@ -216,6 +220,8 @@ watch(
       bottom: 0px;
       border-radius: 5px;
       z-index: -1;
+      /* 添加过渡效果 */
+      transition: background-color 0.5s ease;
     }
     :deep(svg) {
       fill: var(--color-sidebar-icon-selected);
@@ -245,6 +251,8 @@ watch(
         background-color: var(--color-primary);
       }
     }
+
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.25);
   }
   .icon {
     margin-right: var(--spacing-xs);
