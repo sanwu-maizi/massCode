@@ -12,6 +12,14 @@
       class="item"
       @click="onAddNewSnippet"
     >
+      <UniconsTrash />
+    </AppActionButton>
+    <AppActionButton
+      v-if="!query"
+      v-tooltip="i18n.t('newSnippet')"
+      class="item"
+      @click="onAddNewSnippet"
+    >
       <UniconsPlus />
     </AppActionButton>
     <AppActionButton

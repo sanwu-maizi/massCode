@@ -44,6 +44,7 @@
     >
       <template #action>
         <AppActionButton v-tooltip="i18n.t('newFolder')">
+          <UniconsTrash @click="onAddNewFolder" />
           <UniconsPlus @click="onAddNewFolder" />
         </AppActionButton>
       </template>

@@ -34,7 +34,24 @@ export const onAddNewSnippet = async () => {
   emitter.emit('snippet:focus-name', true)
   track('snippets/add-new')
 }
+export const onNewSnippet = async () => {
+  const folderStore = useFolderStore()
+  const snippetStore = useSnippetStore()
 
+  snippetStore.fragment = 0
+  snippetStore.isMarkdownPreview = false
+
+  await snippetStore.addNewSnippet()
+
+  if (folderStore.selectedId) {
+    await snippetStore.getSnippetsByFolderIds(folderStore.selectedIds!)
+  } else {
+    snippetStore.setSnippetsByAlias('inbox')
+  }
+
+  emitter.emit('snippet:focus-name', true)
+  track('snippets/add-new')
+}
 export const onCreateSnippet = async (body: Partial<Snippet>) => {
   const snippetStore = useSnippetStore()
 
@@ -68,6 +85,16 @@ export const onAddDescription = async () => {
   track('snippets/add-description')
 }
 
+export const onAddFolder = async () => {
+  const folderStore = useFolderStore()
+  const snippetStore = useSnippetStore()
+
+  const folder = await folderStore.addNewFolder()
+  snippetStore.selected = undefined
+
+  emitter.emit('scroll-to:folder', folder.id)
+  track('folders/add-new')
+}
 export const onAddNewFolder = async () => {
   const folderStore = useFolderStore()
   const snippetStore = useSnippetStore()

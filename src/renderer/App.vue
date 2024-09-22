@@ -288,10 +288,12 @@ ipc.on('api:snippet-create', (event, body: Snippet) => {
 body {
   margin: 0;
 }
+
 #app {
   height: 100vh;
   overflow: hidden;
 }
+
 .app {
   &-title-bar {
     position: absolute;
@@ -302,11 +304,13 @@ body {
     -webkit-app-region: drag;
     z-index: 1010;
     transition: all 0.5s;
+
     &.is-win {
       border-top: 1px solid var(--color-border);
     }
   }
 }
+
 .top-notification {
   position: absolute;
   top: 5px;
@@ -318,12 +322,46 @@ body {
   display: flex;
   gap: var(--spacing-sm);
 }
+
 .update {
   background: -webkit-linear-gradient(60deg, var(--color-primary), limegreen);
-  -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-size: 200% auto;
   animation: shine 3s ease infinite;
+}
+
+#app {
+  height: 100vh;
+  overflow: hidden;
+}
+
+.app {
+  &-title-bar {
+    position: absolute;
+    top: 0;
+    width: 100%;
+    height: var(--title-bar-height);
+    user-select: none;
+    -webkit-app-region: drag;
+    z-index: 1010;
+    transition: all 0.5s;
+
+    &.is-win {
+      border-top: 1px solid var(--color-border);
+    }
+  }
+}
+
+.top-notification {
+  position: absolute;
+  top: 5px;
+  right: var(--spacing-sm);
+  z-index: 1020;
+  text-transform: uppercase;
+  font-size: 10px;
+  font-weight: bold;
+  display: flex;
+  gap: var(--spacing-sm);
 }
 
 @keyframes shine {
