@@ -199,12 +199,13 @@ watch(
   width: 100%;
   z-index: 2;
   user-select: none;
+
   &.is-system,
   &.is-tag {
     padding-left: var(--spacing-sm);
     padding-right: var(--spacing-sm);
   }
-  &.is-focused,
+  &.is-fo cused,
   &.is-selected,
   &.is-highlighted {
     &::before {
@@ -216,8 +217,12 @@ watch(
       bottom: 0px;
       border-radius: 5px;
       z-index: -1;
+      /* 添加过渡效果 */
+      transition: background-color 1s ease;
     }
     :deep(svg) {
+      /* 添加过渡效果 */
+      transition: background-color 1s ease;
       fill: var(--color-sidebar-icon-selected);
     }
   }
@@ -245,6 +250,9 @@ watch(
         background-color: var(--color-primary);
       }
     }
+
+    /*阴影*/
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.25);
   }
   .icon {
     margin-right: var(--spacing-xs);
