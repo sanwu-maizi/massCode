@@ -26,6 +26,10 @@ export const useFolderStore = defineStore('folders', {
   },
 
   actions: {
+    deleteFolders () {
+      this.folders = []
+      this.foldersTree = []
+    },
     async getFolders () {
       const { data } = await useApi<Folder[]>('/folders').get().json()
       this.folders = data.value

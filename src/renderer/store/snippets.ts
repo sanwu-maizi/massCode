@@ -348,6 +348,10 @@ export const useSnippetStore = defineStore('snippets', {
 
       sortSnippetsBy(this.snippets, this.sort)
     },
+    deleteAllSnippets () {
+      this.snippets = []
+      this.all = []
+    },
     togglePreview (type: PreviewType) {
       switch (type) {
         case 'markdown':
