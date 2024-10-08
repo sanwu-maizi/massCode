@@ -16,6 +16,7 @@ export interface AppStore {
   hideSubfolderSnippets?: boolean
   compactMode?: boolean
   version?: string
+  isDouBao?: boolean
 }
 
 export interface MarkdownSettings {

@@ -2,7 +2,8 @@
   <div class="main">
     <TheSidebar />
     <SnippetList />
-    <SnippetsView />
+    <SnippetsView v-if="!store.app.get('isDouBao')" />
+    <RouterView v-if="store.app.get('isDouBao')" />
   </div>
 </template>
 
@@ -15,6 +16,7 @@ import { useTagStore } from '@/store/tags'
 import { useAppStore } from '@/store/app'
 import { computed } from 'vue'
 import { emitter } from '@/composable'
+import { RouterView } from 'vue-router'
 
 const folderStore = useFolderStore()
 const snippetStore = useSnippetStore()
@@ -28,7 +30,6 @@ const init = async () => {
   const storedFolderId = store.app.get('selectedFolderId')
   const storedFolderAlias = store.app.get('selectedFolderAlias')
   const storedSnippetId = store.app.get('selectedSnippetId')
-
   await folderStore.getFolders()
   await snippetStore.getSnippets()
   await tagStore.getTags()

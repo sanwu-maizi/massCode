@@ -32,6 +32,7 @@ export type ContextMenuType =
   | 'trash'
   | 'favorites'
   | 'tag'
+  | 'DouBao'
 
 type MainMenuAction =
   | 'add-description'
