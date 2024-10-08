@@ -20,7 +20,7 @@ export interface State {
   isMindmapPreview: boolean
   isScreenshotPreview: boolean
   isCodePreview: boolean
-  isShareActive: boolean
+  isShareActive?: boolean
 }
 
 export type PreviewType = 'markdown' | 'mindmap' | 'screenshot' | 'code'

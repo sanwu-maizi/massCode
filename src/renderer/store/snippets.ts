@@ -18,6 +18,7 @@ import type {
 import { useTagStore } from './tags'
 import { useAppStore } from './app'
 import Fuse from 'fuse.js'
+import router from '@/router'
 
 export const useSnippetStore = defineStore('snippets', {
   state: (): State => ({
@@ -275,7 +276,14 @@ export const useSnippetStore = defineStore('snippets', {
       if (alias === 'trash') {
         snippets = this.all.filter(i => i.isDeleted)
       }
-
+      if (alias === 'DouBao') {
+        router.push('/doubao')
+        store.app.set('isDouBao', true)
+      } else {
+        router.push('/')
+        store.app.set('isDouBao', false)
+      }
+      console.log(store.app.get('isDouBao'))
       this.snippets = snippets
       sortSnippetsBy(this.snippets, this.sort)
 

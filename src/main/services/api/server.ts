@@ -116,6 +116,9 @@ export class ApiServer {
 
       res.status(200).send(snippets)
     })
+    app.get('/doubao', (req, res) => {
+      res.status(200).send('<h1>nihao</h1>')
+    })
 
     app.use((req, res, next) => {
       if (req.method === 'POST') {
