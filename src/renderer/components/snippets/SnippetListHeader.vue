@@ -8,9 +8,9 @@
     >
     <AppActionButton
       v-if="!query"
-      v-tooltip="i18n.t('newSnippet')"
+      v-tooltip="i18n.t('deleteAllSnippets')"
       class="item"
-      @click="onAddNewSnippet"
+      @click="onDeleteAllSnippets"
     >
       <UniconsTrash />
     </AppActionButton>
@@ -33,7 +33,7 @@
 </template>
 
 <script setup lang="ts">
-import { emitter, onAddNewSnippet } from '@/composable'
+import { emitter, onAddNewSnippet, onDeleteAllSnippets } from '@/composable'
 import { useSnippetStore } from '@/store/snippets'
 import { useDebounceFn } from '@vueuse/core'
 import { computed, onUnmounted, ref } from 'vue'

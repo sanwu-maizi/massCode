@@ -16,10 +16,17 @@ export const useApi = createFetch({
 
 export const emitter = mitt<EmitterEvents>()
 
+export const onDeleteAllSnippets = () => {
+  const snippetStore = useSnippetStore()
+  const folderStore = useFolderStore()
+  snippetStore.deleteAllSnippets()
+  folderStore.deleteFolders()
+}
 export const onAddNewSnippet = async () => {
   const folderStore = useFolderStore()
   const snippetStore = useSnippetStore()
-
+  console.log(111)
+  console.log(snippetStore.all)
   snippetStore.fragment = 0
   snippetStore.isMarkdownPreview = false
 
