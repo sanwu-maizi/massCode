@@ -36,7 +36,8 @@ export const useSnippetStore = defineStore('snippets', {
     isMarkdownPreview: false,
     isMindmapPreview: false,
     isScreenshotPreview: false,
-    isCodePreview: false
+    isCodePreview: false,
+    snippetsByFilter: [] // 假设这里存放了过滤后的 snippets 列表
   }),
 
   getters: {
@@ -379,6 +380,25 @@ export const useSnippetStore = defineStore('snippets', {
           this.isCodePreview = !this.isCodePreview
           break
       }
+    },
+    moveSnippets (draggedIds: string[], targetId: string) {
+      const draggedIndex = this.snippetsByFilter.findIndex(
+        snippet => snippet.id === draggedIds[0]
+      )
+      const targetIndex = this.snippetsByFilter.findIndex(
+        snippet => snippet.id === targetId
+      )
+
+      if (draggedIndex === -1 || targetIndex === -1) {
+        console.error('未找到要拖拽的元素或目标元素')
+        return
+      }
+
+      // 从原位置移除拖拽的项
+      const [movedSnippet] = this.snippetsByFilter.splice(draggedIndex, 1)
+
+      // 插入到目标位置
+      this.snippetsByFilter.splice(targetIndex, 0, movedSnippet)
     }
   }
 })

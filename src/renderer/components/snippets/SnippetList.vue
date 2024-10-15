@@ -20,6 +20,7 @@
           :folder="i.folder?.name"
           :date="i.updatedAt"
           :name="i.name"
+          class="item"
         />
       </PerfectScrollbar>
     </div>
@@ -37,6 +38,7 @@ import { useSnippetStore } from '@/store/snippets'
 import { onMounted, onUnmounted, ref, watch } from 'vue'
 import interact from 'interactjs'
 import { store } from '@/electron'
+import draggable from 'vuedraggable' // 引入vuedraggable
 
 const snippetStore = useSnippetStore()
 const appStore = useAppStore()
