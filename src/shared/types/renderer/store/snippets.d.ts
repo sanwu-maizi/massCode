@@ -21,6 +21,7 @@ export interface State {
   isScreenshotPreview: boolean
   isCodePreview: boolean
   isShareActive?: boolean
+  snippetsByFilter: Snippet[] // 这里需要添加 snippetsByFilter 属性
 }
 
 export type PreviewType = 'markdown' | 'mindmap' | 'screenshot' | 'code'

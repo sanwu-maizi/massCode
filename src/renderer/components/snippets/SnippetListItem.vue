@@ -13,6 +13,8 @@
     @contextmenu="onClickContextMenu"
     @dragstart="onDragStart"
     @dragend="onDragEnd"
+    @dragover.prevent
+    @drop="onDrop"
   >
     <div class="header">
       <div class="name">
@@ -309,6 +311,16 @@ emitter.on('scroll-to:snippet', onScrollToSnippet)
 onUnmounted(() => {
   emitter.off('scroll-to:snippet', onScrollToSnippet)
 })
+
+const onDrop = (e: DragEvent) => {
+  e.preventDefault()
+  const draggedId = e.dataTransfer?.getData('payload')
+  if (draggedId) {
+    // 处理拖拽排序逻辑
+    const draggedIds = JSON.parse(draggedId)
+    snippetStore.moveSnippets(draggedIds, props.id) // 实现拖拽排序的方法
+  }
+}
 </script>
 
 <style lang="scss" scoped>
